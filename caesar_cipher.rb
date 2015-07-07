@@ -1,7 +1,7 @@
 def caesar_cipher(text,shift_factor)
   ans = ""
   text.each_char { |char| ans += cipher(char, shift_factor)}
-  puts ans
+  return ans
 end
 
 def cipher(char, factor)
@@ -25,4 +25,4 @@ puts "Enter text:"
 text = gets.chomp
 puts "Enter shift factor:"
 factor = gets.chomp.to_i
-caesar_cipher(text, factor)
+puts caesar_cipher(text, factor)
