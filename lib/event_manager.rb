@@ -48,14 +48,16 @@ days = Array.new(7) {0}
 contents.each do |row|
   id = row[0]
   name = row[:first_name]
-  number = clean_phone_no(row[:homephone])
+  #number = clean_phone_no(row[:homephone])
   date = date_extract(row[:regdate])
   zipcode = clean_zipcode(row[:zipcode])
-  legislators = legislators_by_zipcode(zipcode)
-  form_letter = erb_template.result(binding)
+  #legislators = legislators_by_zipcode(zipcode)
+  #form_letter = erb_template.result(binding)
   hours[date.hour] += 1
   days[date.wday] += 1
 end
-
-puts days.each_with_index.max.to_s
-puts hours.each_with_index.max.to_s
+week = {0 => 'Sunday', 1 => 'Monday', 2 => 'Tuesday', 3 => 'Wednesday', 4 => 'Thursday', 5 => 'Friday', 6 => 'Saturday'}
+day = days.each_with_index.max
+hour = hours.each_with_index.max
+puts "Day with max registrations - #{week[day[1]]} : #{day[0]}"
+puts "Hour with max registrations - #{hour[1]} : #{hour[0]}"
